@@ -111,10 +111,14 @@
 
         var property
           , thing
-          , debug = []
-          , id    = (ion.re ? ion.re.id : null) || 'ion'
-          , space = link.with.getSpace (id)
-          ; id    = id.replace (/(.+)(@|\.\d\.).*/, '$1')
+          , debug     = []
+          , idMatcher = (/(.+)(@|\.\d\.).*/)
+          , id        = (ion.re ? ion.re.id : null) || 'ion'
+          , atMatcher = (/(@.*)/)
+          , at        = id.match (atMatcher)
+          , space     = link.with.getSpace (id)
+          ; id        = id.replace (idMatcher, "$1")
+          ; at        = at ? at [1] : ''
           ;
 
         for (property in ion)
@@ -122,8 +126,21 @@
             if (!thing)                                                 continue
             if ((typeof thing != 'function') && !Array.isArray (thing)) continue
             if (!ion.hasOwnProperty (property))                         continue
-          ! thing.with    &&              (thing.with = ion)
-          ! thing.our     &&  space    && (thing.our  = /*|| ion ||*/ space)
+          ! thing.with &&           (thing.with = ion)
+          ! thing.our  && space  && (thing.our  = /*|| ion ||*/ space)
+
+/**/      ~ / 1: add space to .with as an ~re.id.domain-named property  /
+
+            if ((at in thing.with) && thing.with [at] != space)
+                ~ {warn:"overriding ${id} .with [${at}]"}
+
+            thing.with [at] = space
+//*
+          ~ / 2: add space's uniquely-named properties to .with         /
+          ~ / 3: ~warn about  exactly-named properties in .with & space /
+          ~ / 4: change all .our references to .with's                  /
+          ~ / 5: fix any issues caused by these changes                 /
+//*/
           ; (id != 'ion') && !ion.debug && debug.push ("linked "+ id +'.'+ property)
           }
 
