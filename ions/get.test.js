@@ -5,7 +5,7 @@
     , by: ['mike.lee', 'team']
     , at:  'ionify.net'
     , on:  -4.200709
-    , to:  -7.20190413
+    , to:  -7.20190419
     , is:  -0.1
     , it:  "Tests ionify's ~get api"
     }
@@ -31,8 +31,8 @@
 +
 { re:" exploring syntax for ~get'ing non-ion scripts in order then using them "
 , get
-:   [ 'http://cdn.jsdelivr.net/gh/iskitz/ajile/use/com.iskitz.ajile.js?mvcoff,mvcshareoff'
-    , 'http://cdn.jsdelivr.net/gh/iskitz/ajile/play/api/scripts/com.iskitz.ajile.examples.LoadExample.js'
+:   [ 'https://cdn.jsdelivr.net/gh/iskitz/ajile/use/com.iskitz.ajile.js?mvcoff,mvcshareoff'
+    , 'https://cdn.jsdelivr.net/gh/iskitz/ajile/play/api/scripts/com.iskitz.ajile.examples.LoadExample.js'
     ]
 , in: 'order'
 , then
