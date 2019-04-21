@@ -4,8 +4,8 @@
     { id:  'find.link.share@ionify'
     , by: ['mike.lee', 'team'  ]
     , on: { 200709   : -4      }
-    , to: { 20190415 : -7.0159 }
-    , at:  -0.1
+    , to: { 20190419 : -7.0159 }
+    , is:  -0.1
     , it:" provides context via ~link which ensures ions' object-type members can   "
         +" access their containing ion, ~share for sharing things via domains,      "
         +" optionally aliased data and-or functionality, and ~find.in for resolving "
@@ -129,13 +129,13 @@
           ! thing.with &&           (thing.with = ion)
           ! thing.our  && space  && (thing.our  = /*|| ion ||*/ space)
 
-/**/      ~ / 1: add space to .with as an ~re.id.domain-named property  /
+//      ~ / 1: add space to .with as an ~re.id.domain-named property  /
 
             if ((at in thing.with) && thing.with [at] != space)
                 ~ {warn:"overriding ${id} .with [${at}]"}
 
             thing.with [at] = space
-//*
+/*
           ~ / 2: add space's uniquely-named properties to .with         /
           ~ / 3: ~warn about  exactly-named properties in .with & space /
           ~ / 4: change all .our references to .with's                  /
