@@ -2,13 +2,12 @@
 ~
 { re:
     { id:  'do@ionify'
-    , is:  "ionify's ~on.do.after action that senses ions & acts after a condition's met"
     , by: ['mike.lee','team']
-    , on:  '2007.09-04'
-    , to:  '2019.04.13-07'
-    , at:  -0.1
+    , on:  -4.200709
+    , to:  -7.20190419
+    , is:  -0.1
     , it:
-        [" implements: "
+        [" implements ionify's ~on.do.after action that senses ions & acts after a condition's met: "
         ," ~ {   on:['ids'], do:action, after:'all'|'any'|'each'|'1..n'}"
         ," + {after:['ids'], do:action}  "
         ," + {on: String || [], do: ...} "
