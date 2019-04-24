@@ -4,7 +4,7 @@
     { id:  'find.link.share@ionify'
     , by: ['mike.lee', 'team'  ]
     , on: { 200709   : -4      }
-    , to: { 20190419 : -7.0159 }
+    , to: { 20190424 : -7.0627 }
     , is:  -0.1
     , it:" provides context via ~link which ensures ions' object-type members can   "
         +" access their containing ion, ~share for sharing things via domains,      "
@@ -12,6 +12,7 @@
         +" names to ions.                                                           "
     , we:
         [" were updating ~link & ~share to use .with vs .our  "
+        ," like "|| ~{set:'member', in:object, to:value} ||"for $hadowed members"
         ," were implementing ~link.to & ~link.as              "
         ," will apply unlink when ~link.to is falsey          "
         ," want to combine ~share & ~link.to                  "
@@ -146,6 +147,40 @@
 
       ! ion.debug && ~{debug:debug}
         return true
+      },
+
+  linkSetIn
+  : function setting (input)
+      { var object = input.in
+          , member = input.set
+
+        return typeof object [member] == 'undefined'
+                 ?  ((object [member]  =  input.to)
+                    , 0
+                    )
+                 :  setting.with.linkShadowed (input)
+      },
+
+  linkExpand
+  : function expanding (input)
+      { var member = input.set
+          , object = input.in
+          , dots   = (/\.+/)
+          , spaces = (/\s+/)
+
+      },
+
+  linkShadowed
+  : function shadowed (input)
+      { var shadows = 0
+
+        while
+          ( input.set in input.in )
+          { input.set += '$'
+            shadows   ++
+          }
+
+        return shadows
       }
 
 , unlinkInfo
