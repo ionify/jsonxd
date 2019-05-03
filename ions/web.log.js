@@ -82,7 +82,7 @@
           , message      = ion     [level]
           , state        = prepare [level]
           ; logger.state = state
-          ; logger.id    = ion.re.from || logger.re.id
+          ; logger.id    = ion.re.from || ''
 
         if('boolean' == typeof message)
           if( state = message != state)
@@ -90,10 +90,11 @@
             ; message      = "~" + level + (logger.state ? " on" : " off")
             }
 
-      ; logger.state   && Array.isArray (message) && (message = message.join (" "))
-      ; logger.message  = String        (message)
-      ; logging [level] = logger.state
-      ; return state
+        logger.state    &&  Array.isArray (message) && (message = message.join (" "))
+        logger.message   =  String        (message)
+        logging [level]  =  logger.state
+        logger.id       && (logger.message = ": " + logger.message)
+        return state
       },
 
   loggedInfo:
@@ -110,7 +111,7 @@
     function logging (ion)
       { function cons0le (ion)
           {  prepare (ion)
-          && console [logger.level] (logger.id + ": " + logger.message)
+          && console [logger.level] (logger.id + logger.message)
           ;  return   logger.state
           }
 
