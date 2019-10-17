@@ -133,7 +133,7 @@
 //      ~ / 1: add space to .with as an ~re.id.domain-named property  /
 
             if ((at in thing.with) && thing.with [at] != space)
-                ~ {warn:"overriding ${id} .with [${at}]"}
+                ~ {warn:`overriding ${id} .with [${at}]`}
 
             thing.with [at] = space
 /*
